@@ -1,0 +1,32 @@
+label {
+  display: inline-block;
+}
+
+.usage {
+  display: inline-block;
+  padding-left: 10rem;
+
+  &-two {
+    display: inline-block;
+    padding-left: 15rem;
+  }
+}
+
+.menu {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  &-item {
+    flex: 1;
+    margin: 5px;
+    padding: 0;
+  }
+}
+
+.radius {
+  border-radius: 50px;
+}
+
+.sCursor {
+  cursor: default;
+}

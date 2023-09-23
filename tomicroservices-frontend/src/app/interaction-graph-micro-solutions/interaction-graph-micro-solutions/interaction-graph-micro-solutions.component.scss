@@ -1,0 +1,78 @@
+@import "primeicons/primeicons.css";
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+.wrapper > * {
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1;
+}
+
+.divGraph {
+  width: 68%;
+}
+
+.footerButtons {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  justify-content: space-between;
+}
+
+.selecionado {
+  background-color: #0069d9;
+  color: #fff;
+}
+.selecionado:hover {
+  opacity: none;
+  background-color: none;
+  color: #fff;
+}
+
+.p-button-outlined,
+.p-button {
+  margin-right: 10px;
+}
+button {
+  margin: 0 8px;
+}
+
+.sample-wrapper {
+  margin: 16px;
+}
+
+.combo-section {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  margin-bottom: 16px;
+}
+
+.combo {
+  width: 430px;
+}
+
+.loading-icon {
+  display: flex;
+  margin-top: 10%;
+  margin-left: 15%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  margin-bottom: 0px; /* Ajuste conforme necessário para a posição desejada */
+}
+
+@media (max-width: 700px) {
+  button {
+      margin: 16px 0;
+  }
+}

@@ -1,0 +1,109 @@
+<div class="wrapper">
+  <div class="card">
+    <div *ngIf="treeVisivel" class="flex card-container indigo-container">
+      <div class="flex-1 h-4rem">
+        <app-tree
+          [treeFiles]="treeFiles"
+          [selectedFile]="selectedFile"
+        ></app-tree>
+      </div>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <div class="flex-1 h-4rem text-black text-center p-4 mx-4">
+        <ngx-graph
+          class="chart-container"
+          [view]="[800, 650]"
+          [showMiniMap]="true"
+          [links]="edges"
+          [nodes]="nodes"
+          [update$]="updateGraph$"
+          [autoCenter]="true"
+          [autoZoom]="true"
+        >
+        <ng-template #defsTemplate>
+          <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+            <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+          </svg:marker>
+        </ng-template>
+        <ng-template #nodeTemplate let-node>
+          <svg:g class="node">
+            <svg:rect
+              [attr.width]="node.dimension.width"
+              [attr.height]="node.dimension.height"
+              [attr.fill]="node.data.color"
+              [attr.rx] = "15"
+              [attr.ry] = "15"
+            />
+            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 2">
+              {{node.label}}
+            </svg:text>
+          </svg:g>
+        </ng-template>
+        <ng-template #linkTemplate let-link>
+          <svg:g class="edge">
+            <svg:path class="line" stroke-width="2" stroke = 'black'></svg:path>
+            <svg:text class="edge-label" text-anchor="middle">
+              <textPath
+                class="text-path"
+                [attr.href]="'#' + link.id"
+                [style.dominant-baseline]="link.dominantBaseline"
+                startOffset="50%"
+              >
+                {{link.label}}
+              </textPath>
+            </svg:text>
+          </svg:g>
+        </ng-template>
+        
+        </ngx-graph>
+        
+      </div>
+    </div>
+  </div>
+  <div class="loading-icon">
+    <i *ngIf="loading" class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+  </div>
+  <div *ngIf="tabelaVisivel">
+    <app-table-micro-solutions
+      [tabelaVisivel]="tabelaVisivel"
+    ></app-table-micro-solutions>
+  </div>
+</div>
+
+<div class="border border-solid border-1 border-gray-500"></div>
+
+<footer>
+  <div class="footerButtons">
+    <div class="containerButtons">
+      <button pButton class="p-button-outlined">Data</button>
+      <button
+        [class.selecionado]="treeSelecionado"
+        pButton
+        type="button"
+        class="p-button-outlined"
+        (click)="viewTree()"
+      >
+        Graph
+      </button>
+      <button
+        [class.selecionado]="tabelaSelecionado"
+        pButton
+        class="p-button-outlined"
+        (click)="viewTable()"
+      >
+        Table
+      </button>
+      <p-dropdown [options]="metrics" [(ngModel)]="selectedMetric" (onChange)="onDropdownChange($event)" optionLabel="name"></p-dropdown>
+    </div>
+
+    <div class="containerButtons">
+      <button pButton class="p-button">Download</button>
+      <button pButton class="p-button" (click)="previousPage()">
+        Previous Page
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <p>Copyright©2022-2023</p>
+  </div>
+</footer>

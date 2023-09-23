@@ -1,0 +1,171 @@
+<p-toast></p-toast>
+<p-card>
+      <div class="flex space-x-4 flex-wrap" style="max-width: auto">
+        <div
+          class="flex-1 sm:flex-wrap flex align-items-start justify-content-start"
+        >
+          <input class="w-12" type="text" pInputText placeholder="Filter" />
+        </div>
+        <div
+          class="flex-1 sm:flex-wrap flex align-items-center justify-content-center"
+        >
+          <button
+            class="p-button-primary w-8"
+            styleClass="p-button-sm"
+            type="button"
+            pButton
+            label="Download All Solutions"
+            iconPos="left"
+          >
+            <i class="pi pi-save"></i>
+          </button>
+        </div>
+        <div
+          class="flex-2 sm:flex-wrap flex align-items-center justify-content-center"
+        >
+          <p-avatar
+            icon="pi pi-user"
+            styleClass="mr-2"
+            size="large"
+            shape="circle"
+          ></p-avatar>
+          <div>
+            <p class="text-sm">User01</p>
+          </div>
+        </div>
+      </div>
+    </p-card>
+
+    <section class="pt-4">
+      <form [formGroup]="evaluationForm">
+      <p-card *ngFor="let microSolutions of interactiveEvaluation?.listaOcorrencia">
+        <h3><i class="pi pi-share-alt" style="font-size: 1rem"></i>{{microSolutions.name}}</h3>
+        <section class="grid gap-x-8 gap-y-4 grid-cols-3">
+          <p-panel class="col" [header]="microSolutions.solutionName">
+            <ng-template *ngIf="microSolutions.evaluated" pTemplate="icons">
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-check"
+                class="p-button-success p-button-rounded p-button-sm sCursor"
+                color="green"
+              ></button>
+            </ng-template>
+
+            <ng-template *ngIf="!microSolutions.evaluated" pTemplate="icons">
+              <button
+                aria-readonly="true"
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-times"
+                class="p-button-danger p-button-rounded p-button-sm sCursor"
+                color="green"
+              ></button>
+            </ng-template>
+
+            <fieldset class="border border-solid border-gray-300">
+              <label>{{microSolutions.objectives}}</label>
+            </fieldset>
+            <label>Evaluation</label>
+            <div class="pt-3">
+              <p-inputNumber
+                (onBlur)="verficiaValorMaiorQue()"
+                formControlName="ratings"
+                [showButtons]="true"
+                inputId="minmax-buttons"
+                [min]="1"
+                [max]="5"
+                [maxlength]="1"
+              >{{microSolutions.ratings}}</p-inputNumber>
+            </div>
+            <ng-template pTemplate="footer">
+              <button (click)="navigateToGraph()" pButton class="p-button-sm">
+                <i class="pi pi-external-link"></i> &nbsp; Open Solution
+              </button>
+            </ng-template>
+          </p-panel>
+
+          <p-panel class="col" [header]="microSolutions.solutionName">
+            <ng-template   pTemplate="icons">
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-check"
+                class="p-button-success p-button-rounded p-button-sm"
+                color="green"
+              ></button>
+            </ng-template>
+
+            <fieldset class="border border-solid border-gray-300">
+              <label>{{microSolutions.objectives}}</label>
+            </fieldset>
+            <label>Evaluation</label>
+            <div class="pt-3">
+              <p-inputNumber
+              (onBlur)="verficiaValorMaiorQue()"
+                formControlName="ratings"
+                [showButtons]="true"
+                inputId="minmax-buttons"
+                [min]="1"
+                [max]="6"
+                [maxlength]="1"
+              >{{microSolutions.ratings}}</p-inputNumber>
+            </div>
+
+            <ng-template pTemplate="footer">
+              <button (click)="navigateToGraph()" pButton class="p-button-sm">
+                <i class="pi pi-external-link"></i> &nbsp; Open Solution
+              </button>
+            </ng-template>
+          </p-panel>
+
+
+          <p-panel class="col" [header]="microSolutions.solutionName">
+            <ng-template   pTemplate="icons">
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-check"
+                class="p-button-success p-button-rounded p-button-sm"
+                color="green"
+              ></button>
+            </ng-template>
+
+            <fieldset class="border border-solid border-gray-300">
+              <label>{{microSolutions.objectives}}</label>
+            </fieldset>
+            <label>Evaluation</label>
+            <div class="pt-3">
+              <p-inputNumber
+              formControlName="ratings"
+                [showButtons]="true"
+                inputId="minmax-buttons"
+                [min]="1"
+                [max]="5"
+                [maxlength]="1"
+              >{{microSolutions.ratings}}</p-inputNumber>
+            </div>
+
+            <ng-template pTemplate="footer">
+              <button (click)="navigateToGraph()" pButton class="p-button-sm">
+                <i class="pi pi-external-link"></i> &nbsp; Open Solution
+              </button>
+            </ng-template>
+          </p-panel>
+
+
+        </section>
+      </p-card>
+    </form>
+    </section>
+
+
+<div>
+
+  <app-footer></app-footer>
+
+</div>

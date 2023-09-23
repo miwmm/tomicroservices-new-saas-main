@@ -1,0 +1,30 @@
+{
+    "data":
+    [
+        {
+            "label": "Microservices",
+            "data": "Documents Folder",
+            "children": [
+                {
+                    "label": "Microservice 0 ",
+                    "data": "Work Folder",
+                    "children": [{"label": " teste.gerado.ManterAluno4.executar4!ManterAluno!"}]
+                },
+                {
+                    "label": "Microservice 0 ",
+                    "data": "Work Folder",
+                    "children": [{"label": " teste.gerado.ManterAluno4.executar4!ManterAluno!"}]
+                },
+                {
+                    "label": "Microservice 0 ",
+                    "data": "Work Folder",
+                    "children": [{"label": " teste.gerado.ManterAluno4.executar4!ManterAluno!"}]
+                },
+                {
+                    "label": "Microservice 0 ",
+                    "data": "Work Folder",
+                    "children": [{"label": " teste.gerado.ManterAluno4.executar4!ManterAluno!", "data": "Expenses Document"}, {"label": "Resume.doc", "icon": "pi pi-file", "data": "Resume Document"}]
+                }]
+        }
+    ]
+}
